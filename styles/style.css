@@ -34,6 +34,10 @@
           box-sizing: inherit;
 }
 
+body {
+  background: #523461ff;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,8 +52,6 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
-  background: #523461ff;
   color: white;
   font-family: "Varela Round", sans-serif;
 }
@@ -125,7 +127,7 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
+  height: auto;
   width: 90vw;
   background: #2f158dff;
   margin: 1rem;

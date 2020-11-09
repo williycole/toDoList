@@ -45,10 +45,10 @@ document.querySelector('#add-item').addEventListener("click", function(event){
             console.log(listItemId);
             ////--Add Item to page list
         }
-        userInput.value = "";
         addToPage (userInput);
+        // userInput.value = "";
         listItemId ++;
-    // localStorage.setItem('MyToDoList', JSON.stringify(listItemsArray));
+    localStorage.setItem('MyToDoList', JSON.stringify(listItemsArray));
 });
 ////Default to prevent reload after get user name
 document.querySelector('#add-item').addEventListener("click", function(event){
