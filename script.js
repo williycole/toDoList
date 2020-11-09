@@ -44,12 +44,12 @@ document.querySelector('#add-item').addEventListener("click", function(event){
             console.log(listItemsArray);
             console.log(listItemId);
             ////--Add Item to page list
+            addToPage (userInput);
         }
-        addToPage (userInput);
-        // userInput.value = "";
+        userInput.value = "";
         listItemId ++;
-    localStorage.setItem('MyToDoList', JSON.stringify(listItemsArray));
-});
+        localStorage.setItem('MyToDoList', JSON.stringify(listItemsArray));
+    });
 ////Default to prevent reload after get user name
 document.querySelector('#add-item').addEventListener("click", function(event){
     event.preventDefault()
