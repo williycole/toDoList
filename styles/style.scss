@@ -1,0 +1,247 @@
+/* ******************************************
+ *******************************************
+ *
+ *
+ *
+ * This document contains all the
+ * styling for the game.
+ *
+ *
+ /*******************************************
+ *******************************************
+ *
+ *
+ * 00. common & reset css & colors
+ * 01. form base
+ * 02.
+ * 03.
+ * 04.
+ * 05.
+ *
+/*****************************
+ *   00. common & reset css
+ *****************************
+ *
+ */
+
+ ////-----Colors-----
+
+/* SCSS HEX */
+$english-violet: #523461ff;
+$orange-soda: #fa5a3fff;
+$persian-indigo: #2f158dff;
+$dark-purple: #35233dff;
+$eerie-black: rgb(48, 46, 46);
+$light-purple: #7352C4;
+$white: white;
+
+////-----Fonts-----
+$main: 'Varela Round', sans-serif;
+$marker: 'Finger Paint', cursive;
+
+////-----Reset-----
+
+ * {
+    padding:0;
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    // width: 100vw;
+    background: $english-violet;
+    color: white;
+    font-family: $main;
+}
+
+h1 {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+////text-shadow: [x-offset] [y-offset] [blur] [color];
+    text-shadow: 3px 1px 0 $orange-soda;
+    color:$white;
+    font-family: $marker;
+    text-transform: uppercase;
+}
+
+h2{
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+i {
+    font-size: 1rem;
+    color:$orange-soda;
+}
+
+i:hover {
+    color: $persian-indigo;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+////Tablet View
+@media(min-width: 768px){
+    i {
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+////Desktop View
+@media (min-width: 1200px){
+    h1 {
+        font-size: 3rem;
+    }
+    i {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/*****************************
+ *   01. form base
+ *****************************
+ *
+ */
+
+#to-do-list-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 90vw;
+    background: $persian-indigo;
+    margin: 1rem;
+    border-radius: 5rem;
+    box-shadow: .5rem .5rem 0 $orange-soda;
+    text-align: center;
+}
+
+
+.add-list-item-cntr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    background: $light-purple;
+    padding: .2rem;
+    margin: 1rem;
+    border-radius: 5px;
+    border: 2px solid $orange-soda;
+    box-shadow: 0px 2px 8px $eerie-black;
+}
+
+#task-ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.item-cntr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    background: $light-purple;
+    padding: .2rem;
+    margin: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px $eerie-black;
+}
+
+.icon {
+    margin: .5rem;
+}
+
+
+.task {
+    background: $light-purple;
+}
+
+#user-input {
+    width: auto;
+    margin: .5rem 1rem;
+    padding: .5rem;
+    border-radius: 5px;
+    background: $eerie-black;
+    color: white;
+    font-family: monospace;
+    font-weight: 600;
+
+}
+
+////Tablet View
+@media(min-width: 768px){
+    #to-do-list-form {
+        width: 60vw;
+        margin: 1rem;
+        border-radius: 5rem;
+        box-shadow: 1rem 1rem 0 $orange-soda;
+    }
+
+    .add-list-item-cntr {
+        padding: 1rem 1.5rem;
+        width: 80%;
+    }
+
+    #user-input {
+        margin: 1rem;
+        padding: .7rem 2.8rem;
+    }
+
+    .item-cntr {
+        background: $light-purple;
+        padding: 1rem 1.5rem;
+    }
+
+    .task {
+       font-size: 1rem;
+    }
+
+    .icon {
+        font-size: 1.2rem;
+    }
+}
+////Desktop View
+@media (min-width: 1200px){
+    #user-input {
+        margin: 1rem;
+        padding: 1rem 5rem;
+    }
+
+    .task {
+        font-size: 1.3rem;
+     }
+
+     .icon {
+        font-size: 1.7rem;
+    }
+}

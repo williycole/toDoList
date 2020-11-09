@@ -1,0 +1,263 @@
+/* ******************************************
+ *******************************************
+ *
+ *
+ *
+ * This document contains all the
+ * styling for the game.
+ *
+ *
+ /*******************************************
+ *******************************************
+ *
+ *
+ * 00. common & reset css & colors
+ * 01. form base
+ * 02.
+ * 03.
+ * 04.
+ * 05.
+ *
+/*****************************
+ *   00. common & reset css
+ *****************************
+ *
+ */
+/* SCSS HEX */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background: #523461ff;
+  color: white;
+  font-family: "Varela Round", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  text-shadow: 3px 1px 0 #fa5a3fff;
+  color: white;
+  font-family: "Finger Paint", cursive;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+i {
+  font-size: 1rem;
+  color: #fa5a3fff;
+}
+
+i:hover {
+  color: #2f158dff;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  i {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 2.3rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 3rem;
+  }
+  i {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/*****************************
+ *   01. form base
+ *****************************
+ *
+ */
+#to-do-list-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  width: 90vw;
+  background: #2f158dff;
+  margin: 1rem;
+  border-radius: 5rem;
+  -webkit-box-shadow: 0.5rem 0.5rem 0 #fa5a3fff;
+          box-shadow: 0.5rem 0.5rem 0 #fa5a3fff;
+  text-align: center;
+}
+
+.add-list-item-cntr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  background: #7352C4;
+  padding: .2rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border: 2px solid #fa5a3fff;
+  -webkit-box-shadow: 0px 2px 8px #302e2e;
+          box-shadow: 0px 2px 8px #302e2e;
+}
+
+#task-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.item-cntr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  background: #7352C4;
+  padding: .2rem;
+  margin: 1rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 8px #302e2e;
+          box-shadow: 0px 2px 8px #302e2e;
+}
+
+.icon {
+  margin: .5rem;
+}
+
+.task {
+  background: #7352C4;
+}
+
+#user-input {
+  width: auto;
+  margin: .5rem 1rem;
+  padding: .5rem;
+  border-radius: 5px;
+  background: #302e2e;
+  color: white;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  #to-do-list-form {
+    width: 60vw;
+    margin: 1rem;
+    border-radius: 5rem;
+    -webkit-box-shadow: 1rem 1rem 0 #fa5a3fff;
+            box-shadow: 1rem 1rem 0 #fa5a3fff;
+  }
+  .add-list-item-cntr {
+    padding: 1rem 1.5rem;
+    width: 80%;
+  }
+  #user-input {
+    margin: 1rem;
+    padding: .7rem 2.8rem;
+  }
+  .item-cntr {
+    background: #7352C4;
+    padding: 1rem 1.5rem;
+  }
+  .task {
+    font-size: 1rem;
+  }
+  .icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #user-input {
+    margin: 1rem;
+    padding: 1rem 5rem;
+  }
+  .task {
+    font-size: 1.3rem;
+  }
+  .icon {
+    font-size: 1.7rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */
