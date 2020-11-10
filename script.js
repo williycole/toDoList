@@ -1,17 +1,18 @@
 ////======Program Features & Table of Contents=====
 /*****
 ********
-**** 01. Gen Varialbes for Program
+**** 01. Gen Varialbes for Program & local storage load
 **** 02. Add HTML li to page
 **** 03. Remove li from page, and reset array list
 **** 04. Add object to array list and push to page
 **** 05. Delete Single Item
 **** 06. Check Off Item
+**** 07. Rename Item
 ********
 ******/
 
 /***=======================
- ***01. Gen Varialbes for Program
+ ***01. Gen Varialbes for Program & local storage load
 =======================***/
 let deleteIdArray =[];
 let editIdArray = [];
@@ -20,6 +21,16 @@ let editIdArray = [];
 let listItemsArray = [];
 let listItemId = 0;
 const taskList = document.querySelector('#task-ul');
+
+
+// Check for saved list items
+let savedData = localStorage.getItem('savedToDoList');
+
+// If there are any saved items, update  list
+if (savedData) {
+	taskList.innerHTML = savedData;
+}
+
 
 /***=======================
  ***02. Add HTML li to page
@@ -47,10 +58,12 @@ function addToPage (userInput){
 
 /***=======================
  ***03. Remove li from page, and reset array list
+ --removes local storage
 =======================***/
 document.querySelector('#delete-list').addEventListener("click", function(event){
     listItemsArray = [];////Empties Array
     taskList.innerHTML = '';//// Removes li from html
+    localStorage.clear();
 
     console.log('it deletes list');
     console.log(listItemsArray)
@@ -60,6 +73,7 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
  ***04. Add object to array list and push to page
   --relies on 01. and 02.
   --uses preventDefault
+  --saves to local storage
 =======================***/
     document.querySelector('#add-item').addEventListener("click", function(event){
         ////get user input on click
@@ -82,7 +96,8 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
         }
         userInput.value = "";
         listItemId ++;
-        localStorage.setItem('MyToDoList', JSON.stringify(listItemsArray));
+        // localStorage.setItem('wishlistItems', wishlist.innerHTML);
+        localStorage.setItem('savedToDoList', taskList.innerHTML);
     });
 ////Default to prevent reload after get user name
 document.querySelector('#add-item').addEventListener("click", function(event){
@@ -106,4 +121,14 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
   --
   --uses preventDefault
 =======================***/
+
+
+
+
+/***=======================
+ ***07. Rename Item
+  --
+  --uses preventDefault
+=======================***/
+
 
