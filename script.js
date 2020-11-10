@@ -3,9 +3,9 @@
 ********
 **** 01. Gen Varialbes for Program & local storage load
 **** 02. Add HTML li to page
-**** 03. Remove li from page, and reset array list
-**** 04. Add object to array list and push to page
-**** 05. Delete Single Item
+**** 03. Delete Single Item
+**** 04. Remove li from page, and reset array list
+**** 05. Add object to array list and push to page
 **** 06. Check Off Item
 **** 07. Rename Item
 ********
@@ -14,8 +14,11 @@
 /***=======================
  ***01. Gen Varialbes for Program & local storage load
 =======================***/
-let deleteIdArray =[];
-let editIdArray = [];
+// let editIdArray = [];
+// let deleteItem = 0;
+// let deleteItem = [];
+
+
 
 
 let listItemsArray = [];
@@ -25,7 +28,6 @@ const taskList = document.querySelector('#task-ul');
 
 // Check for saved list items
 let savedData = localStorage.getItem('savedToDoList');
-
 // If there are any saved items, update  list
 if (savedData) {
 	taskList.innerHTML = savedData;
@@ -38,26 +40,35 @@ if (savedData) {
 =======================***/
 function addToPage (userInput){
     const taskLi = `<li class="item-cntr">
-    <button class="task-finished">
+    <div class="task-finished">
     <i class="far fa-check-square icon"></i>
-    </button>
+    </div>
 
     <p class="task icon">${userInput}</p>
 
-    <button class="edit-task">
+    <div class="edit-task">
     <i class="fas fa-edit icon"></i>
-    </button>
+    </div>
 
-    <button class="delete-task">
-    <i class="far fa-trash-alt delete-task icon"></i>
-    </button>
+    <div class="delete-task">
+    <i class="far fa-trash-alt delete-task icon" onclick="removeItemFromPage()"></i>
+    </div>
     </li>`
     const position = "beforeend";
     taskList.insertAdjacentHTML(position, taskLi);
 }
+/***=======================
+ ***03. Delete Single Item
+  --
+  --uses preventDefault
+=======================***/
+
+// function removeItemFromPage(userInput) {
+
+// }
 
 /***=======================
- ***03. Remove li from page, and reset array list
+ ***04. Remove li from page, and reset array list
  --removes local storage
 =======================***/
 document.querySelector('#delete-list').addEventListener("click", function(event){
@@ -70,7 +81,7 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
 });
 
 /***=======================
- ***04. Add object to array list and push to page
+ ***05. Add object to array list and push to page
   --relies on 01. and 02.
   --uses preventDefault
   --saves to local storage
@@ -83,19 +94,23 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
             {
                 name: userInput,////keep an eye on this
                 id: listItemId,
+                // delete: deleteItem,
                 done: false,
                 trash: false
             });
 
-            console.log('list item works');
+            // console.log('list item works');
             console.log(userInput);
             console.log(listItemsArray);
+
+            // console.log(deleteItem);
             console.log(listItemId);
             ////--Add Item to page list
             addToPage (userInput);
         }
         userInput.value = "";
         listItemId ++;
+        // deleteItem ++;
         // localStorage.setItem('wishlistItems', wishlist.innerHTML);
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     });
@@ -104,17 +119,6 @@ document.querySelector('#add-item').addEventListener("click", function(event){
     event.preventDefault()
 });
 
-/***=======================
- ***05. Delete Single Item
-  --
-  --uses preventDefault
-=======================***/
-
-
-////Default to prevent reload after list reset
-document.querySelector('#delete-list').addEventListener("click", function(event){
-    event.preventDefault()
-});
 
 /***=======================
  ***06. Check Off Item
