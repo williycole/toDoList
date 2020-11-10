@@ -1,3 +1,18 @@
+////======Program Features=====
+/*****
+********
+**** 01. Gen Varialbes for Program
+**** 02. Add HTML li to page
+**** 03. Remove li from page, and reset array list
+**** 04. Add object to array list and push to page
+**** 05. Delete Single Item
+**** 06. Check Off Item
+********
+******/
+
+/***=======================
+ ***01. Gen Varialbes for Program
+=======================***/
 let deleteIdArray =[];
 let editIdArray = [];
 
@@ -5,9 +20,11 @@ let editIdArray = [];
 let listItemsArray = [];
 let listItemId = 0;
 const taskList = document.querySelector('#task-ul');
-///////-->>>
-///////-- NOTE: NEW CONCEPT
-////-----Adds to page
+
+/***=======================
+ ***02. Add HTML li to page
+ ///////-- NOTE: NEW CONCEPT
+=======================***/
 function addToPage (userInput){
     const taskLi = `<li class="item-cntr">
     <button class="task-finished">
@@ -28,20 +45,22 @@ function addToPage (userInput){
     taskList.insertAdjacentHTML(position, taskLi);
 }
 
-////-----Remove from page, and reset array list
+/***=======================
+ ***03. Remove li from page, and reset array list
+=======================***/
 document.querySelector('#delete-list').addEventListener("click", function(event){
     listItemsArray = [];////Empties Array
-
-
-    taskList.innerHTML = '';
+    taskList.innerHTML = '';//// Removes li from html
 
     console.log('it deletes list');
     console.log(listItemsArray)
 });
-    ///////-->>>
 
-
-    //-----Add object to array list
+/***=======================
+ ***04. Add object to array list and push to page
+  --relies on 01. and 02.
+  --uses preventDefault
+=======================***/
     document.querySelector('#add-item').addEventListener("click", function(event){
         ////get user input on click
         const userInput = document.querySelector('#user-input').value;
@@ -70,10 +89,11 @@ document.querySelector('#add-item').addEventListener("click", function(event){
     event.preventDefault()
 });
 
-
-
-////-----Delete Single Item
-
+/***=======================
+ ***05. Delete Single Item
+  --
+  --uses preventDefault
+=======================***/
 
 
 ////Default to prevent reload after list reset
@@ -81,8 +101,9 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
     event.preventDefault()
 });
 
-
-
-////Check Off Item
-
+/***=======================
+ ***06. Check Off Item
+  --
+  --uses preventDefault
+=======================***/
 
