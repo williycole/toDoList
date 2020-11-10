@@ -7,26 +7,37 @@ let listItemId = 0;
 const taskList = document.querySelector('#task-ul');
 ///////-->>>
 ///////-- NOTE: NEW CONCEPT
-////Adds to page
+////-----Adds to page
 function addToPage (userInput){
-        const taskLi = `<li class="item-cntr">
-        <button class="task-finished">
-        <i class="far fa-check-square icon"></i>
-        </button>
+    const taskLi = `<li class="item-cntr">
+    <button class="task-finished">
+    <i class="far fa-check-square icon"></i>
+    </button>
 
-        <p class="task icon">${userInput}</p>
+    <p class="task icon">${userInput}</p>
 
-        <button class="edit-task">
-        <i class="fas fa-edit icon"></i>
-        </button>
+    <button class="edit-task">
+    <i class="fas fa-edit icon"></i>
+    </button>
 
-        <button class="delete-task">
-        <i class="far fa-trash-alt delete-task icon"></i>
-        </button>
-        </li>`
-        const position = "beforeend";
-        taskList.insertAdjacentHTML(position, taskLi);
-    }
+    <button class="delete-task">
+    <i class="far fa-trash-alt delete-task icon"></i>
+    </button>
+    </li>`
+    const position = "beforeend";
+    taskList.insertAdjacentHTML(position, taskLi);
+}
+
+////-----Remove from page, and reset array list
+document.querySelector('#delete-list').addEventListener("click", function(event){
+    listItemsArray = [];////Empties Array
+
+
+    taskList.innerHTML = '';
+
+    console.log('it deletes list');
+    console.log(listItemsArray)
+});
     ///////-->>>
 
 
@@ -43,7 +54,7 @@ function addToPage (userInput){
                 trash: false
             });
 
-            // console.log('list item works');
+            console.log('list item works');
             console.log(userInput);
             console.log(listItemsArray);
             console.log(listItemId);
@@ -61,16 +72,10 @@ document.querySelector('#add-item').addEventListener("click", function(event){
 
 
 
-////-----Delete Item
+////-----Delete Single Item
 
 
 
-////-----Reset list
-document.querySelector('#delete-list').addEventListener("click", function(event){
-    listItemsArray = [];////Deletes objects and resets array to empty
-    console.log('it deletes list');
-    console.log(listItemsArray)
-});
 ////Default to prevent reload after list reset
 document.querySelector('#delete-list').addEventListener("click", function(event){
     event.preventDefault()
