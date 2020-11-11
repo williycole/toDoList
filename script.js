@@ -3,28 +3,23 @@
 ********
 **** 01. Gen Varialbes for Program & local storage load
 **** 02. Add HTML li to page
-**** 03. Delete Single Item
-**** 04. Remove li from page, and reset array list
+**** 03. Delete & check off li item
+**** 04. Remove ul from page, and reset array list
 **** 05. Add object to array list and push to page
-**** 06. Check Off Item
-**** 07. Rename Item
+**** 06. Rename Item
 ********
 ******/
-
 /***=======================
  ***01. Gen Varialbes for Program & local storage load
 =======================***/
 let listItemsArray = [];
 let listItemId = 0;
-
 const taskList = document.querySelector('#task-ul');
-// Check for saved list items
-let savedData = localStorage.getItem('savedToDoList');
-// If there are any saved items, update  list
-if (savedData) {
+
+let savedData = localStorage.getItem('savedToDoList');//// Check for saved list items
+if (savedData) {//// If there are any saved items, update  list
 	taskList.innerHTML = savedData;
 }
-
 /***=======================
  ***02. Add HTML li to page
  ///////-- NOTE: NEW CONCEPT
@@ -40,7 +35,7 @@ function addToPage (userInput){
     taskList.insertAdjacentHTML(position, taskLi);
 }
 /***=======================
- ***03. Delete Single Item
+ ***03. Delete & check off li item
  ///////-- NOTE: NEW CONCEPT
   --uses preventDefault
 =======================***/
@@ -64,15 +59,14 @@ function deleteCheck(e){
 }
 
 /***=======================
- ***04. Remove li from page, and reset array listE
+ ***04. Remove ul from page, and reset array list
  --removes local storage
 =======================***/
 document.querySelector('#delete-list').addEventListener("click", function(event){
     listItemsArray = [];////Empties Array
     taskList.innerHTML = '';//// Removes li from html
     localStorage.clear();
-    // console.log('it deletes list');
-    // console.log(listItemsArray)
+
 });
 
 /***=======================
@@ -87,7 +81,7 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
     if(listItemsArray.length >= 0){
         listItemsArray.push(////Update list with Item
             {
-                name: userInput,////keep an eye on this
+                name: userInput,
                 id: listItemId,
                 deleteItem: false,
                 editItem: false
@@ -96,11 +90,6 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
         }
         userInput.value = "";
         listItemId ++;
-        deleteItemArray.push({
-            id: deleteItemId
-        });
-        deleteItemId ++;
-        console.log(deleteItemArray),  console.log(listItemsArray),  console.log(deleteItemId);
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     });
 ////Default to prevent reload after get user name
@@ -108,17 +97,8 @@ document.querySelector('#add-item').addEventListener("click", function(event){
     event.preventDefault()
 });
 
-
 /***=======================
- ***06. Check Off Item
-  --
-  --uses preventDefault
-=======================***/
-
-
-
-/***=======================
- ***07. Rename Item
+ ***06. Rename Item
   --
   --uses preventDefault
 =======================***/
