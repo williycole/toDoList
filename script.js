@@ -3,7 +3,7 @@
 ********
 **** 01. Gen Varialbes for Program & local storage load
 **** 02. Add HTML li to page
-**** 03. Delete & check off li item
+**** 03. Delete/local storge handlers & check off li item
 **** 04. Remove ul from page, and reset array list
 **** 05. Add object to array list and push to page
 **** 06. Rename Item
@@ -35,7 +35,7 @@ function addToPage (userInput){
     taskList.insertAdjacentHTML(position, taskLi);
 }
 /***=======================
- ***03. Delete & Check off Completed li item
+ ***03. Delete/local storge handlers & check off li item
  ///////-- NOTE: NEW CONCEPT
   --uses preventDefault
 =======================***/
@@ -51,16 +51,24 @@ function deleteCheck(e){
         ////Arrow function to delay remove and update local storage
           setTimeout(delayDelete = () => {
               trashCheckIt.remove()
-              localStorage.setItem('savedToDoList', taskList.innerHTML);
+              ////Deletes html from local storage
+              localStorage.removeItem('savedToDoList', taskList.innerHTML);
             }, 600);
-            ////Deletes item from array
-        }
+            ////Deletes object from array
 
+
+
+            ////Deletes object from local storage
+            // localStorage.removeItem('savedToDoList', taskList.innerHTML);
+
+
+
+        }
     ////Checks Off Items
     if(item.classList[0] === "doneBtn"){
         const trashCheckIt = item.parentElement;
-        // doneBtn.style.color="green";
         trashCheckIt.classList.toggle('finished-task');
+        ////Updates html check off to local storage
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     }
 }
@@ -93,10 +101,21 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
                 editItem: false
             });
             addToPage (userInput);////--Add Item to page list
+            console.log(`list item id----${listItemId}`)
         }
         userInput.value = "";
         listItemId ++;
+        ////----------------------------------Local Storage Code
+        ////Saves New List item HTML to local storage
         localStorage.setItem('savedToDoList', taskList.innerHTML);
+        ////Saves object to local Storage as string then changes back to object
+        let listItemsArray_localString = JSON.stringify(listItemsArray);
+        localStorage.setItem("listItemsArray", listItemsArray_localString);
+                console.log(`string----${listItemsArray_localString}`);
+
+        let listItemsArray_localObject = JSON.parse(localStorage.getItem(listItemsArray));
+                console.log(`object----${listItemsArray_localObject}`);
+        ////----------------------------------------------------
     });
 ////Default to prevent reload after get user name
 document.querySelector('#add-item').addEventListener("click", function(event){
@@ -110,3 +129,6 @@ document.querySelector('#add-item').addEventListener("click", function(event){
 =======================***/
 
 
+
+console.log(`localStorage.listItemsArray----${localStorage.listItemsArray}`)
+// console.log(`listItemsArray----${listItemsArray}`);
