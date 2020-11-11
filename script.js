@@ -26,8 +26,8 @@ if (savedData) {//// If there are any saved items, update  list
 =======================***/
 function addToPage (userInput){
     const taskLi = `<li class="item-cntr" >
-                        <i class="doneBtn far fa-check-square icon"></i>
                         <p class="task icon">${userInput}</p>
+                        <i class="doneBtn far fa-check-square icon"></i>
                         <i class="editBtn fas fa-edit icon"></i>
                         <i class="trashBtn far fa-trash-alt  icon">
                     </li>`
@@ -45,7 +45,7 @@ function deleteCheck(e){
     console.log(e.target);
     ////Deletes Items
     if(item.classList[0] === "trashBtn"){
-        const trashCheckIt = item.parentElement;
+        const trashCheckIt = item.previousSibling;
         trashCheckIt.remove();
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     }
@@ -53,6 +53,7 @@ function deleteCheck(e){
     ////Checks Off Items
     if(item.classList[0] === "doneBtn"){
         const trashCheckIt = item.parentElement;
+        // doneBtn.style.color="green";
         trashCheckIt.classList.toggle('finished-task');
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     }

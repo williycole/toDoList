@@ -11,7 +11,7 @@
  *******************************************
  *
  *
- * 00. common & reset css & colors
+ * 00. common, reset css, colors  & JS Style
  * 01. form base
  * 02.
  * 03.
@@ -40,7 +40,6 @@ $main: 'Varela Round', sans-serif;
 $marker: 'Finger Paint', cursive;
 
 ////-----Reset-----
-
  * {
     padding:0;
     margin: 0;
@@ -121,6 +120,13 @@ button {
     }
 }
 
+////-----JS Styles-----
+.finished-task .doneBtn {
+    color: green;
+}.finished-task .task {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
 
 /*****************************
  *   01. form base
@@ -179,6 +185,8 @@ button {
     margin: 1rem;
     border-radius: 5px;
     box-shadow: 0px 2px 8px $eerie-black;
+    color: white;
+    text-decoration: none;
 }
 
 .icon {
