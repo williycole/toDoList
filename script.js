@@ -4,11 +4,13 @@
 **** 01. Gen Varialbes for Program & local storage load
 **** 02. Add HTML li to page
 **** 03. Delete/local storge handlers & check off li item
-**** 04. Remove ul from page, and reset array list
-**** 05. Add object to array list and push to page
-**** 06. Rename Item
+**** 04. Rename Item
+**** 05. Remove ul from page, and reset array list
+**** 06. Add object to array list and push to page
 ********
 ******/
+
+
 /***=======================
  ***01. Gen Varialbes for Program & local storage load
 =======================***/
@@ -20,6 +22,8 @@ let savedData = localStorage.getItem('savedToDoList');//// Check for saved list 
 if (savedData) {//// If there are any saved items, update  list
 	taskList.innerHTML = savedData;
 }
+
+
 /***=======================
  ***02. Add HTML li to page
  ///////-- NOTE: NEW CONCEPT
@@ -34,6 +38,8 @@ function addToPage (userInput){
     const position = "beforeend";
     taskList.insertAdjacentHTML(position, taskLi);
 }
+
+
 /***=======================
  ***03. Delete/local storge handlers & check off li item
  ///////-- NOTE: NEW CONCEPT
@@ -52,17 +58,8 @@ function deleteCheck(e){
           setTimeout(delayDelete = () => {
               trashCheckIt.remove()
               ////Deletes html from local storage
-              localStorage.removeItem('savedToDoList', taskList.innerHTML);
+              localStorage.setItem('savedToDoList', taskList.innerHTML);
             }, 600);
-            ////Deletes object from array
-
-
-
-            ////Deletes object from local storage
-            // localStorage.removeItem('savedToDoList', taskList.innerHTML);
-
-
-
         }
     ////Checks Off Items
     if(item.classList[0] === "doneBtn"){
@@ -72,6 +69,7 @@ function deleteCheck(e){
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     }
 }
+
 
 /***=======================
  ***04. Remove ul from page, and reset array list
@@ -83,8 +81,42 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
     localStorage.clear();
 });
 
+
 /***=======================
- ***05. Add object to array list and push to page
+ ***05. Rename Item
+  --
+  --uses preventDefault
+=======================***/
+// taskList.addEventListener('click', deleteCheck);
+// function deleteCheck(e){
+//     const item = e.target;
+//     console.log(e.target);
+//     ////Deletes Items
+//     if(item.classList[0] === "trashBtn"){
+//         const trashCheckIt = item.parentElement;
+//         trashCheckIt.classList.add("dipOut")
+//         ////trashCheckIt.remove()
+//         ////Arrow function to delay remove and update local storage
+//           setTimeout(delayDelete = () => {
+//               trashCheckIt.remove()
+//               ////Deletes html from local storage
+//               localStorage.setItem('savedToDoList', taskList.innerHTML);
+//             }, 600);
+//         }
+//     ////Checks Off Items
+//     if(item.classList[0] === "doneBtn"){
+//         const trashCheckIt = item.parentElement;
+//         trashCheckIt.classList.toggle('finished-task');
+//         ////Updates html check off to local storage
+//         localStorage.setItem('savedToDoList', taskList.innerHTML);
+//     }
+// }
+// console.log(`localStorage.listItemsArray----${localStorage.listItemsArray}`);
+//// console.log(`listItemsArray----${listItemsArray}`);
+
+
+/***=======================
+ ***06. Add object to array list and push to page
   --relies on 01. and 02.
   --uses preventDefault
   --saves to local storage
@@ -111,10 +143,11 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
         ////Saves object to local Storage as string then changes back to object
         let listItemsArray_localString = JSON.stringify(listItemsArray);
         localStorage.setItem("listItemsArray", listItemsArray_localString);
-                console.log(`string----${listItemsArray_localString}`);
 
-        let listItemsArray_localObject = JSON.parse(localStorage.getItem(listItemsArray));
-                console.log(`object----${listItemsArray_localObject}`);
+        /////code for future updates/testing
+        // console.log(`string----${listItemsArray_localString}`);
+        // let listItemsArray_localObject = JSON.parse(localStorage.getItem(listItemsArray));
+        //         console.log(`object----${listItemsArray_localObject}`);
         ////----------------------------------------------------
     });
 ////Default to prevent reload after get user name
@@ -122,13 +155,3 @@ document.querySelector('#add-item').addEventListener("click", function(event){
     event.preventDefault()
 });
 
-/***=======================
- ***06. Rename Item
-  --
-  --uses preventDefault
-=======================***/
-
-
-
-console.log(`localStorage.listItemsArray----${localStorage.listItemsArray}`)
-// console.log(`listItemsArray----${listItemsArray}`);
