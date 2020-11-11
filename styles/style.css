@@ -117,6 +117,11 @@ button {
   text-decoration: line-through;
 }
 
+.dipOut {
+  -webkit-transform: translateX(30rem) rotateZ(10deg);
+          transform: translateX(30rem) rotateZ(10deg);
+}
+
 /*****************************
  *   01. form base
  *****************************
@@ -212,6 +217,8 @@ button {
           box-shadow: 0px 2px 8px #302e2e;
   color: white;
   text-decoration: none;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .icon {

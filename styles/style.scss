@@ -127,6 +127,9 @@ button {
     opacity: 0.4;
     text-decoration: line-through;
 }
+.dipOut {
+    transform: translateX(30rem) rotateZ(10deg);
+}
 
 /*****************************
  *   01. form base
@@ -187,6 +190,7 @@ button {
     box-shadow: 0px 2px 8px $eerie-black;
     color: white;
     text-decoration: none;
+    transition: all 1s ease;
 }
 
 .icon {

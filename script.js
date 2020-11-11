@@ -45,10 +45,16 @@ function deleteCheck(e){
     console.log(e.target);
     ////Deletes Items
     if(item.classList[0] === "trashBtn"){
-        const trashCheckIt = item.previousSibling;
-        trashCheckIt.remove();
-        localStorage.setItem('savedToDoList', taskList.innerHTML);
-    }
+        const trashCheckIt = item.parentElement;
+        trashCheckIt.classList.add("dipOut")
+        ////trashCheckIt.remove()
+        ////Arrow function to delay remove and update local storage
+          setTimeout(delayDelete = () => {
+              trashCheckIt.remove()
+              localStorage.setItem('savedToDoList', taskList.innerHTML);
+            }, 600);
+            ////Deletes item from array
+        }
 
     ////Checks Off Items
     if(item.classList[0] === "doneBtn"){
@@ -67,7 +73,6 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
     listItemsArray = [];////Empties Array
     taskList.innerHTML = '';//// Removes li from html
     localStorage.clear();
-
 });
 
 /***=======================
