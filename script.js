@@ -14,18 +14,10 @@
 /***=======================
  ***01. Gen Varialbes for Program & local storage load
 =======================***/
-// let editIdArray = [];
-// let deleteItem = 0;
-// let deleteItem = [];
-
-
-
-
 let listItemsArray = [];
 let listItemId = 0;
+
 const taskList = document.querySelector('#task-ul');
-
-
 // Check for saved list items
 let savedData = localStorage.getItem('savedToDoList');
 // If there are any saved items, update  list
@@ -33,51 +25,54 @@ if (savedData) {
 	taskList.innerHTML = savedData;
 }
 
-
 /***=======================
  ***02. Add HTML li to page
  ///////-- NOTE: NEW CONCEPT
 =======================***/
 function addToPage (userInput){
-    const taskLi = `<li class="item-cntr">
-    <div class="task-finished">
-    <i class="far fa-check-square icon"></i>
-    </div>
-
-    <p class="task icon">${userInput}</p>
-
-    <div class="edit-task">
-    <i class="fas fa-edit icon"></i>
-    </div>
-
-    <div class="delete-task">
-    <i class="far fa-trash-alt delete-task icon" onclick="removeItemFromPage()"></i>
-    </div>
-    </li>`
+    const taskLi = `<li class="item-cntr" >
+                        <i class="doneBtn far fa-check-square icon"></i>
+                        <p class="task icon">${userInput}</p>
+                        <i class="editBtn fas fa-edit icon"></i>
+                        <i class="trashBtn far fa-trash-alt  icon">
+                    </li>`
     const position = "beforeend";
     taskList.insertAdjacentHTML(position, taskLi);
 }
 /***=======================
  ***03. Delete Single Item
-  --
+ ///////-- NOTE: NEW CONCEPT
   --uses preventDefault
 =======================***/
+taskList.addEventListener('click', deleteCheck);
+function deleteCheck(e){
+    const item = e.target;
+    console.log(e.target);
+    ////Deletes Items
+    if(item.classList[0] === "trashBtn"){
+        const trashCheckIt = item.parentElement;
+        trashCheckIt.remove();
+        localStorage.setItem('savedToDoList', taskList.innerHTML);
+    }
 
-// function removeItemFromPage(userInput) {
-
-// }
+    ////Checks Off Items
+    if(item.classList[0] === "doneBtn"){
+        const trashCheckIt = item.parentElement;
+        trashCheckIt.classList.toggle('finished-task');
+        localStorage.setItem('savedToDoList', taskList.innerHTML);
+    }
+}
 
 /***=======================
- ***04. Remove li from page, and reset array list
+ ***04. Remove li from page, and reset array listE
  --removes local storage
 =======================***/
 document.querySelector('#delete-list').addEventListener("click", function(event){
     listItemsArray = [];////Empties Array
     taskList.innerHTML = '';//// Removes li from html
     localStorage.clear();
-
-    console.log('it deletes list');
-    console.log(listItemsArray)
+    // console.log('it deletes list');
+    // console.log(listItemsArray)
 });
 
 /***=======================
@@ -94,24 +89,18 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
             {
                 name: userInput,////keep an eye on this
                 id: listItemId,
-                // delete: deleteItem,
-                done: false,
-                trash: false
+                deleteItem: false,
+                editItem: false
             });
-
-            // console.log('list item works');
-            console.log(userInput);
-            console.log(listItemsArray);
-
-            // console.log(deleteItem);
-            console.log(listItemId);
-            ////--Add Item to page list
-            addToPage (userInput);
+            addToPage (userInput);////--Add Item to page list
         }
         userInput.value = "";
         listItemId ++;
-        // deleteItem ++;
-        // localStorage.setItem('wishlistItems', wishlist.innerHTML);
+        deleteItemArray.push({
+            id: deleteItemId
+        });
+        deleteItemId ++;
+        console.log(deleteItemArray),  console.log(listItemsArray),  console.log(deleteItemId);
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     });
 ////Default to prevent reload after get user name
@@ -125,7 +114,6 @@ document.querySelector('#add-item').addEventListener("click", function(event){
   --
   --uses preventDefault
 =======================***/
-
 
 
 
