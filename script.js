@@ -35,7 +35,7 @@ function addToPage (userInput){
     taskList.insertAdjacentHTML(position, taskLi);
 }
 /***=======================
- ***03. Delete & check off li item
+ ***03. Delete & Check off Completed li item
  ///////-- NOTE: NEW CONCEPT
   --uses preventDefault
 =======================***/
