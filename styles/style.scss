@@ -131,6 +131,18 @@ button {
     transform: translateX(30rem) rotateZ(10deg);
 }
 
+.edit-task-name-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+////// Pick up right below here
+
+.edit-task-name {
+    display: none;
+}
+
 /*****************************
  *   01. form base
  *****************************
@@ -193,12 +205,16 @@ button {
     transition: all 1s ease;
 }
 
-.icon {
-    margin: .5rem;
-}
-
+ i.editBtn {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+ }
 
 .task {
+    color: white;
+    margin: .5rem;
     background: $light-purple;
 }
 
