@@ -29,19 +29,25 @@ if (savedData) {//// If there are any saved items, update  list
 =======================***/
 function addToPage (userInput){
     const taskLi = `<li class="item-cntr" >
-                        <!--
-                        <i class="editBtn fas fa-edit icon">
-                            <p class="task icon">${userInput}</p>
-                            <input type="text" name="edit-task-name"placeholder="edit task">
-                        </i>
-                        -->
+    <!-- *****Code for future additions
+    <i class="editBtn fas fa-edit icon">
+        <p class="task icon">${userInput}</p>
+        <input type="text" name="edit-task-name"placeholder="edit task">
+    </i>
+    -->
 
-                        <form class="edit-task-name-form">
-                            <i class="editBtn fas fa-edit icon">
+<!--*****Code for future additions
+    <form class="edit-task-name-form">
+    <i class="editBtn fas fa-edit icon">
+-->
+
                             <p class="task icon">${userInput}</p>
                             </i>
-                            <input class="edit-task-name" type="text" name="edit-task-name"placeholder="edit task">
-                        </form>
+
+<!--*****Code for future additions
+    <input class="edit-task-name" type="text" name="edit-task-name"placeholder="edit task">
+    </form>
+-->
 
                         <i class="doneBtn far fa-check-square icon"></i>
                         <i class="trashBtn far fa-trash-alt  icon">
@@ -79,16 +85,14 @@ function deleteCheck(e){
         ////Updates html check off to local storage
         localStorage.setItem('savedToDoList', taskList.innerHTML);
     }
-
-
- ////// Pick up right below here
-
-    ////Renames Item
-    if(item.classList[0] === "editBtn"){
-        const textBox = document.querySelector(".edit-task-name");
-        textBox.style.display = "flex"
-        console.log('found me')
-    }
+        ////******Code for Future additions
+        ////// Pick up right below here
+        // ////Renames Item
+        //     if(item.classList[0] === "editBtn"){
+        //         const textBox = document.querySelector(".edit-task-name");
+        //         textBox.style.display = "flex"
+        //         console.log('found me')
+        //     }
 }
 
 
@@ -132,7 +136,7 @@ document.querySelector('#delete-list').addEventListener("click", function(event)
         let listItemsArray_localString = JSON.stringify(listItemsArray);
         localStorage.setItem("listItemsArray", listItemsArray_localString);
 
-        /////code for future updates/testing
+        ////******Code for Future additions
         // console.log(`string----${listItemsArray_localString}`);
         // let listItemsArray_localObject = JSON.parse(localStorage.getItem(listItemsArray));
         //         console.log(`object----${listItemsArray_localObject}`);
